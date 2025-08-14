@@ -1,0 +1,506 @@
+:root {
+    --primary: #2563eb; /* Professional blue */
+    --primary-dark: #1d4ed8; /* Darker blue for hover states */
+    --secondary: #0f172a; /* Dark slate for text and accents */
+    --accent: #7dd3fc; /* Light blue accent */
+    --light: #f1f5f9; /* Light background */
+    --dark: #0f172a; /* Dark text */
+    --text-dark: #0f172a; /* slate-900 */
+    --text-light: #64748b; /* slate-500 */
+    --bg-light: #f8fafc; /* slate-50 */
+}
+
+/* Font classes */
+.font-geist { 
+    font-family: 'Geist', sans-serif !important; 
+}
+
+.font-jakarta { 
+    font-family: 'Plus Jakarta Sans', sans-serif !important; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(
+            circle at 25% 25%,
+            rgba(203, 213, 225, 0.3) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(148, 163, 184, 0.2) 0%,
+            transparent 50%
+        ),
+        linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+            circle at 20% 40%,
+            rgba(225, 203, 203, 0.15) 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 60%,
+            rgba(148, 163, 184, 0.1) 0%,
+            transparent 15%
+        ),
+        radial-gradient(
+            circle at center,
+            rgb(0, 0, 0) 1px,
+            transparent 1px
+        );
+    background-size: 100% 100%, 100% 100%, 25px 25px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Update the main container to have a relative z-index so it appears above the background */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* H2 - Plus Jakarta Sans - 600 */
+h2, .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* H3 - Plus Jakarta Sans - 600 */
+h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* General paragraphs - Geist - 400 */
+p {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text-modern {
+    background: linear-gradient(90deg, #2563eb, #0ea5e9, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradient-flow 5s ease-in-out infinite;
+}
+
+.hero-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem; /* Aumentado para móvil */
+    line-height: 2.75rem;
+    text-align: center; /* Centrado para móvil */
+}
+
+/* md breakpoint (768px) para coincidir con el cambio de layout de la grilla */
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+        line-height: 1;
+        text-align: left; /* Alinear a la izquierda cuando pasa a 2 columnas */
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 3.75rem;
+        line-height: 1;
+        
+    }
+}
+
+.section-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        
+    }
+}
+
+.service-card, .certification-card {
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover, .certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.service-icon, .cert-logo {
+    font-size: 2rem;
+    color: #2563eb; /* primary blue */
+    margin-bottom: 1rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #0f172a; /* dark text */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.4s ease;
+    padding: 0 0 0 0;
+    color: var(--text-light);
+    opacity: 0;
+}
+
+.faq-answer.open {
+    max-height: 1000px; /* Set to a value larger than the tallest FAQ answer */
+    padding: 0 0 1.5rem 0;
+    opacity: 1;
+}
+
+.faq-icon {
+    transition: transform 0.4s ease;
+}
+
+.faq-icon.open {
+    transform: rotate(180deg);
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.whatsapp-float.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+    margin: 3rem 0;
+}
+
+.brand-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+}
+
+.contact-link {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* Navigation menu with gradient background */
+nav .flex {
+    background: linear-gradient(to bottom, #ffffff 0%, #ececec 100%) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(to bottom, #4d85ff 0%, #1d4ed8 100%); /* gradient from primary blue to darker blue */
+    color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.4s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to bottom, #2568fb 0%, #0a3fd2 100%); /* darker gradient on hover */
+    transform: scale(1.05); /* Agrandar el botón un 5% */
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); /* Sombra azul sutil */
+}
+
+/* Custom button for "Ver Servicios" */
+.btn-secondary {
+    background: linear-gradient(to bottom, #2ab8ff 0%, #045a85 100%); /* gradient from #069fe5 to darker shade */
+    color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.4s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to bottom, #45c1ff 0%, #1f8dc4 100%); /* darker gradient on hover */
+    transform: scale(1.05); /* Agrandar el botón un 5% */
+    box-shadow: 0 4px 15px #51c8ff4d; /* Sombra cian sutil */
+}
+
+.btn-outline {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    background-color: white;
+}
+
+.btn-outline:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-dark);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Ensure the mobile menu toggle works properly */
+#nav-menu {
+    transition: all 0.3s ease;
+}
+
+/* Fade in/out effect for content */
+.fade-element {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    will-change: opacity;
+}
+
+.fade-element.visible {
+    opacity: 1;
+}
+/* === INICIO: ESTILOS MENÚ MÓVIL === */
+
+/* Clase de utilidad para bloquear el scroll del body cuando el menú está abierto */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Estilos para el menú en pantallas móviles (sm: 640px) */
+@media (max-width: 639px) {
+    #nav-menu {
+        position: absolute; /* Position relative to the nav */
+        top: calc(100% + 0.5rem); /* Position below the navbar with a small gap */
+        right: 0; /* Align to the right */
+        width: 280px; /* A fixed width for the dropdown */
+        background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+        border-radius: 1rem; /* Rounded corners */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Nice shadow */
+        border: 1px solid rgba(0,0,0,0.08);
+        
+        flex-direction: column;
+        align-items: stretch; /* Stretch items to fill the width */
+        justify-content: flex-start;
+        padding: 0.5rem; /* Adjust padding */
+        gap: 0; /* Remove gap to use border as divider */
+
+        /* Animation for dropdown effect */
+        opacity: 0;
+        transform: scaleY(0.95);
+        transform-origin: top right;
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+        
+        /* Ensure it's not visible by default */
+        pointer-events: none;
+        z-index: 40;
+    }
+
+    #nav-menu.open {
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: auto; /* Make it clickable when open */
+    }
+
+    /* Add a divider line between menu items */
+    #nav-menu li:not(:last-child) {
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    }
+
+    /* Adjust link styles for the new dropdown */
+    #nav-menu .nav-link {
+        display: block; /* Ensure link takes full width */
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.2s ease;
+    }
+
+    #nav-menu .nav-link:hover {
+        background-color: #f1f5f9; /* Light gray background on hover */
+        color: var(--primary);
+    }
+}
+
+/* 
+  Animación del icono de hamburguesa a 'X'.
+  Se activa cuando el .navbar-toggler tiene la clase 'open'.
+*/
+.navbar-toggler.open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.navbar-toggler.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* === FIN: ESTILOS MENÚ MÓVIL === */
+
+/* === INICIO: ESTILOS CARRUSEL DE LOGOS === */
+
+@keyframes scroll {
+    to {
+        /* Mueve el contenedor hacia la izquierda por la mitad de su ancho total */
+        transform: translateX(-50%);
+    }
+}
+
+.logo-scroller {
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    /* La máscara crea el efecto de desvanecimiento en los bordes */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.logo-scroller__inner {
+    display: flex;
+    /* El gap debe ser consistente con el padding de los logos */
+    gap: 3rem; 
+    width: max-content; /* Asegura que el contenedor sea lo suficientemente ancho */
+    flex-wrap: nowrap;
+    
+    /* Animación: 40s de duración, lineal (velocidad constante), infinita */
+    animation: scroll 40s linear infinite;
+}
+
+/* Pausar la animación al pasar el cursor por encima */
+.logo-scroller:hover .logo-scroller__inner {
+    animation-play-state: paused;
+}
+
+.logo-scroller__inner img {
+    height: 40px; /* Altura unificada para todos los logos */
+    width: auto;
+    /* Opcional: efecto sutil en los logos */
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+/* Opcional: efecto al pasar el cursor sobre el carrusel */
+.logo-scroller:hover .logo-scroller__inner img {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* === FIN: ESTILOS CARRUSEL DE LOGOS === */

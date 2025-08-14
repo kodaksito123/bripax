@@ -1,0 +1,70 @@
+.tech-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 300px; /* Adjusted for more space */
+}
+
+.tech-carousel-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.tech-carousel-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-carousel-card.active {
+    opacity: 1;
+}
+
+.tech-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    z-index: 100;
+}
+
+.tech-indicator {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #f5f5f5, #9d9d9d); /* Diagonal gradient for inactive */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+     /* Added border for visibility */
+}
+
+.tech-indicator.active {
+    background: linear-gradient(135deg, #089ee5, #005379); /* Diagonal gradient for active */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tech-carousel-container {
+        height: 250px; /* Adjusted height for smaller screens */
+    }
+
+    .tech-carousel-card p {
+        font-size: 0.9rem;
+    }
+}
