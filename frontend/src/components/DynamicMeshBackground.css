@@ -1,0 +1,93 @@
+/* Optimizaciones CSS para el fondo dinámico */
+
+/* Optimizar las animaciones de partículas */
+.optimized-particle {
+  will-change: opacity;
+  transform: translateZ(0); /* Forzar aceleración por hardware */
+  backface-visibility: hidden; /* Mejorar rendimiento */
+}
+
+/* Optimizar el shader MeshGradient */
+.mesh-gradient-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimizar las transiciones del overlay */
+.overlay-optimized {
+  will-change: background;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reducir la complejidad de las animaciones en dispositivos lentos */
+@media (prefers-reduced-motion: reduce) {
+  .optimized-particle {
+    animation-duration: 6s !important; /* Más lento para menos carga */
+  }
+  
+  .mesh-gradient-optimized {
+    transition-duration: 0.5s !important;
+  }
+  
+  .overlay-optimized {
+    transition-duration: 0.5s !important;
+  }
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 768px) {
+  .optimized-particle {
+    animation-duration: 5s !important;
+  }
+  
+  .mesh-gradient-optimized {
+    transition-duration: 0.3s !important;
+  }
+}
+
+/* Optimizaciones para dispositivos de baja gama */
+@media (max-width: 480px) {
+  .optimized-particle {
+    animation-duration: 7s !important;
+  }
+  
+  .mesh-gradient-optimized {
+    transition-duration: 0.4s !important;
+  }
+}
+
+/* Forzar aceleración por hardware para mejor rendimiento */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimizar el scroll para dispositivos lentos */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-optimized {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reducir la opacidad de las partículas en dispositivos lentos */
+@media (max-width: 768px) {
+  .optimized-particle {
+    opacity: 0.6 !important;
+  }
+}
+
+/* Optimizar el blur para mejor rendimiento */
+.blur-optimized {
+  filter: blur(2px);
+  transform: translateZ(0);
+}
+
+/* Reducir la complejidad del blur en dispositivos lentos */
+@media (max-width: 768px) {
+  .blur-optimized {
+    filter: blur(1px);
+  }
+}

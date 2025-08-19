@@ -40,7 +40,7 @@ function App() {
       <div className="fixed inset-0 -z-10">
         <MeshGradient
 colors={["#ffffff", "#3b82f6", "#172554", "#ffffff"]}
-className="w-full h-full opacity-20"
+className="w-full h-full opacity-30"
         />
       </div>
 
