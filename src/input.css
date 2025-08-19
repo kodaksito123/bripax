@@ -1,8 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Importar estilos personalizados */
-@import '../css/custom-styles.css';
-@import '../css/tech-carousel.css';
-@import '../css/styles.css';

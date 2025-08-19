@@ -1,0 +1,109 @@
+/* Importación de Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Estilos personalizados */
+@import "./custom-styles.css";
+@import "./tech-carousel.css";
+
+/* Reset básico para asegurar que no haya conflictos */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Asegurar que el contenedor principal esté centrado */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Reset de márgenes y padding para elementos comunes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que los elementos flex se comporten correctamente */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Fix específico para evitar alineación izquierda en componentes */
+.max-w-7xl {
+  text-align: center !important;
+}
+
+.max-w-7xl > div {
+  text-align: left;
+}
+
+/* Clase para resaltar palabras clave con tipografía especial */
+.highlight-word {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  color: #2563eb;
+  text-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  position: relative;
+}
+
+.highlight-word::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, #7dd3fc);
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+/* Animación para palabras resaltadas */
+.highlight-word:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-out;
+}
+
+/* Mejoras adicionales para efectos de enfoque */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
